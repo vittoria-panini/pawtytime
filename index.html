@@ -3,15 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Don't be shy, come pawty wif Vitty and fwends</title>
+  <title>Don't be shy, come pawty with Vitty</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --pink: #ff3d8b;
-      --yellow: #ffe93c;
-    }
 
     html, body {
       height: 100%;
@@ -19,7 +14,6 @@
       background: #000;
     }
 
-    /* Aqua glitter background */
     #glitter-bg {
       position: fixed;
       inset: 0;
@@ -31,10 +25,8 @@
       z-index: 0;
     }
 
-    /* Glitter sparkle canvas */
     #glitter { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 
-    /* John Cena — centered, contained */
     #cena-wrap {
       position: fixed;
       inset: 0;
@@ -46,94 +38,106 @@
     }
 
     #cena-img {
-      height: 85vh;
+      height: 88vh;
       width: auto;
-      max-width: 65vw;
+      max-width: 68vw;
       object-fit: contain;
       object-position: center top;
-      filter: brightness(0.9) saturate(1.1);
-      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+      filter: brightness(0.92) saturate(1.1);
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     }
 
-    /* Floating emoji canvas */
     #floaties { position: fixed; inset: 0; pointer-events: none; z-index: 3; }
 
-    /* Main content pinned to bottom */
-    .stage {
+    /* TOP — "Don't be shy," centered */
+    .top-text {
       position: fixed;
-      inset: 0;
+      top: 2rem;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.3s ease forwards;
+    }
+
+    .top-text .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: clamp(0.5rem, 1.2vw, 0.75rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #ffe93c;
+      margin-bottom: 0.4rem;
+    }
+
+    .top-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 7.5vw, 6.5rem);
+      line-height: 0.95;
+      color: #111;
+      text-shadow:
+        0 0 25px rgba(255, 61, 139, 1),
+        0 0 55px rgba(255, 61, 139, 0.85),
+        0 0 90px rgba(255, 61, 139, 0.5);
+    }
+
+    /* BOTTOM — "come pawty with Vitty." centered */
+    .bottom-text {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 0;
+      right: 0;
       z-index: 5;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
-      text-align: center;
-      padding: 0 2rem 2.5rem;
-      gap: 0.6rem;
-    }
-
-    .eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: clamp(0.6rem, 1.6vw, 0.85rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+      gap: 0.5rem;
       opacity: 0;
-      animation: fadeUp 0.7s 0.2s ease forwards;
+      animation: fadeUp 0.7s 0.6s ease forwards;
     }
 
-    h1 {
+    .bottom-text h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.6rem, 9vw, 7rem);
-      line-height: 0.94;
-      color: #fff;
-      text-shadow: 0 0 50px rgba(255,61,139,0.8), 3px 3px 0 var(--pink);
-      opacity: 0;
-      animation: fadeUp 0.7s 0.45s ease forwards;
+      font-size: clamp(2.4rem, 7.5vw, 6.5rem);
+      line-height: 0.95;
+      color: #111;
+      text-align: center;
+      text-shadow:
+        0 0 25px rgba(255, 61, 139, 1),
+        0 0 55px rgba(255, 61, 139, 0.85),
+        0 0 90px rgba(255, 61, 139, 0.5);
     }
-
-    h1 span { color: var(--pink); }
 
     .tagline {
       font-family: 'DM Sans', sans-serif;
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(0.95rem, 2.5vw, 1.5rem);
+      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
       color: #fff;
       text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
-      opacity: 0;
-      animation: fadeUp 0.7s 0.7s ease forwards;
-    }
-
-    .cta-wrap {
-      margin-top: 0.4rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 1s ease forwards;
     }
 
     .cta {
       display: inline-block;
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-size: clamp(0.95rem, 2vw, 1.3rem);
       letter-spacing: 0.12em;
       color: #000;
-      background: var(--yellow);
-      padding: 0.7em 2.4em;
+      background: #ffe93c;
+      padding: 0.65em 2.2em;
       border-radius: 999px;
       text-decoration: none;
-      box-shadow: 0 4px 30px rgba(255,233,60,0.5), 4px 4px 0 var(--pink);
+      box-shadow: 0 4px 30px rgba(255,233,60,0.5), 4px 4px 0 #ff3d8b;
       transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 0.2rem;
     }
 
     .cta:hover {
       transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 8px 40px rgba(255,233,60,0.7), 6px 6px 0 var(--pink);
+      box-shadow: 0 8px 40px rgba(255,233,60,0.7), 6px 6px 0 #ff3d8b;
     }
-
-    .cta:active { transform: scale(0.97); }
 
     #music-btn {
       position: fixed;
@@ -144,7 +148,7 @@
       backdrop-filter: blur(8px);
       border: 1.5px solid rgba(255,255,255,0.35);
       border-radius: 999px;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.1rem;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.8rem;
       color: #fff;
@@ -158,7 +162,7 @@
     #music-btn:hover { background: rgba(255,255,255,0.28); }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -174,15 +178,19 @@
 
 <canvas id="floaties"></canvas>
 
-<div class="stage">
+<!-- TOP centered -->
+<div class="top-text">
   <p class="eyebrow">✨ you are cordially summoned ✨</p>
-  <h1>Don't be shy,<br>come <span>pawty</span><br>wif Vitty and fwends</h1>
+  <h1>Don't be shy,</h1>
+</div>
+
+<!-- BOTTOM centered -->
+<div class="bottom-text">
+  <h2>come pawty with Vitty.</h2>
   <p class="tagline">it's giving birthday energy</p>
-  <div class="cta-wrap">
-    <a class="cta" href="https://partiful.com/create?referrer=landing&highlight=plus_ones&toggledSetting=ticketing" target="_blank">
-      View the Invite →
-    </a>
-  </div>
+  <a class="cta" href="https://partiful.com/e/31PxJnNpnkCRsArT4Dp6?c=cFAXTaDo" target="_blank">
+    View the Invite →
+  </a>
 </div>
 
 <button id="music-btn" onclick="toggleMusic()">
@@ -190,21 +198,20 @@
   <span id="music-label">Play the vibe</span>
 </button>
 
-<iframe id="yt" src="" style="display:none" allow="autoplay"></iframe>
+<audio id="audio" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-  // ── Aqua glitter sparkles ─────────────────────────────────
+  // ── Glitter sparkles ──────────────────────────────────────
   const gc = document.getElementById('glitter');
   const gx = gc.getContext('2d');
-
-  function resizeCanvases() {
-    gc.width  = fc.width  = window.innerWidth;
-    gc.height = fc.height = window.innerHeight;
-  }
+  gc.width = window.innerWidth;
+  gc.height = window.innerHeight;
 
   const sparks = Array.from({length: 200}, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
+    x: Math.random() * gc.width,
+    y: Math.random() * gc.height,
     r: Math.random() * 2.8 + 0.4,
     a: Math.random(),
     da: (Math.random() * 0.018 + 0.004) * (Math.random() > 0.5 ? 1 : -1),
@@ -226,19 +233,18 @@
     requestAnimationFrame(glitterLoop);
   })();
 
-  // ── Floating kiss emoji image ─────────────────────────────
+  // ── Floating kiss emoji ───────────────────────────────────
   const fc = document.getElementById('floaties');
   const fx = fc.getContext('2d');
-
-  gc.width  = fc.width  = window.innerWidth;
-  gc.height = fc.height = window.innerHeight;
+  fc.width = window.innerWidth;
+  fc.height = window.innerHeight;
 
   const emojiImg = new Image();
   emojiImg.src = 'emoji.png';
 
   const floaties = Array.from({length: 25}, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
+    x: Math.random() * fc.width,
+    y: Math.random() * fc.height,
     size: Math.random() * 45 + 25,
     vy: Math.random() * 0.7 + 0.25,
     vx: (Math.random() - 0.5) * 0.5,
@@ -251,18 +257,13 @@
     fx.clearRect(0, 0, fc.width, fc.height);
     if (emojiImg.complete && emojiImg.naturalWidth > 0) {
       floaties.forEach(p => {
-        p.y += p.vy;
-        p.x += p.vx;
-        p.ang += p.spin;
-        if (p.y > fc.height + p.size) {
-          p.y = -p.size;
-          p.x = Math.random() * fc.width;
-        }
+        p.y += p.vy; p.x += p.vx; p.ang += p.spin;
+        if (p.y > fc.height + p.size) { p.y = -p.size; p.x = Math.random() * fc.width; }
         fx.save();
         fx.globalAlpha = p.a;
         fx.translate(p.x, p.y);
         fx.rotate(p.ang);
-        fx.drawImage(emojiImg, -p.size / 2, -p.size / 2, p.size, p.size);
+        fx.drawImage(emojiImg, -p.size/2, -p.size/2, p.size, p.size);
         fx.restore();
       });
     }
@@ -270,26 +271,27 @@
   })();
 
   window.addEventListener('resize', () => {
-    gc.width  = fc.width  = window.innerWidth;
+    gc.width = fc.width = window.innerWidth;
     gc.height = fc.height = window.innerHeight;
   });
 
   // ── Music ─────────────────────────────────────────────────
   let playing = false;
+  const audio = document.getElementById('audio');
   const icon  = document.getElementById('music-icon');
   const label = document.getElementById('music-label');
-  const yt    = document.getElementById('yt');
-  const searchQuery = encodeURIComponent('#happybirthdaysidna redone ALLSTARS');
 
   function toggleMusic() {
     if (!playing) {
-      yt.src = `https://www.youtube.com/embed/?listType=search&list=${searchQuery}&autoplay=1&controls=0&loop=1`;
-      yt.style.display = 'block';
-      icon.textContent  = '🔊';
-      label.textContent = 'Vibing...';
-      playing = true;
+      audio.play().then(() => {
+        icon.textContent  = '🔊';
+        label.textContent = 'Vibing...';
+        playing = true;
+      }).catch(() => {
+        label.textContent = 'Add song.mp3!';
+      });
     } else {
-      yt.src = '';
+      audio.pause();
       icon.textContent  = '🔇';
       label.textContent = 'Play the vibe';
       playing = false;
