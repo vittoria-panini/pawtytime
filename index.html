@@ -186,8 +186,8 @@
 
 <!-- BOTTOM centered -->
 <div class="bottom-text">
-  <h2>come pawty with Vitty.</h2>
-  <p class="tagline">it's giving birthday energy</p>
+  <h2>come pawty wit Vitty.</h2>
+  <p class="tagline">it's giving birthday energy 💅</p>
   <a class="cta" href="https://partiful.com/e/31PxJnNpnkCRsArT4Dp6?c=cFAXTaDo" target="_blank">
     View the Invite →
   </a>
@@ -283,6 +283,7 @@
 
   function toggleMusic() {
     if (!playing) {
+      audio.currentTime = 19;
       audio.play().then(() => {
         icon.textContent  = '🔊';
         label.textContent = 'Vibing...';
