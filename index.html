@@ -18,10 +18,16 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse at 20% 30%, #00fff7 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, #0077ff 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, #00c8e0 0%, transparent 70%),
-        #00b4d8;
+        radial-gradient(ellipse 60% 40% at 10% 15%, rgba(255,182,210,0.85) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 10%, rgba(220,120,160,0.7) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 55% 40%, rgba(255,210,230,0.6) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 20% 70%, rgba(200,90,140,0.65) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 45% at 85% 60%, rgba(255,160,200,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 40% 85%, rgba(230,100,150,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 70% 90%, rgba(255,190,220,0.75) 0%, transparent 55%),
+        #f4a0c0;
+      filter: blur(18px) saturate(0.85) brightness(1.08);
+      transform: scale(1.05);
       z-index: 0;
     }
 
@@ -151,7 +157,37 @@
       box-shadow: 0 8px 40px rgba(255,233,60,0.7), 6px 6px 0 #ff3d8b;
     }
 
-    #music-btn {
+    /* MIDDLE — invite button floating in the blue gap */
+    .mid-cta {
+      position: fixed;
+      bottom: 38%;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.9s ease forwards;
+    }
+
+    .cta-invite {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.3rem);
+      letter-spacing: 0.12em;
+      color: #fff;
+      background: #7c3aed;
+      padding: 0.65em 2.2em;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 30px rgba(124,58,237,0.5), 4px 4px 0 #4c1d95;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .cta-invite:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 40px rgba(124,58,237,0.7), 6px 6px 0 #4c1d95;
+    }
       position: fixed;
       bottom: 1.5rem;
       right: 1.5rem;
@@ -206,18 +242,22 @@
   <h1>Don't be shy,</h1>
 </div>
 
-<!-- BOTTOM centered -->
-<div class="bottom-text">
-  <h2>come pawty wit Vitty.</h2>
-  <p class="tagline">it's giving birthday energy 💅</p>
-  <a class="cta" href="https://partiful.com/e/31PxJnNpnkCRsArT4Dp6?c=cFAXTaDo" target="_blank">
+<!-- MIDDLE — invite button in the blue gap above bottom text -->
+<div class="mid-cta">
+  <a class="cta-invite" href="https://partiful.com/e/31PxJnNpnkCRsArT4Dp6?c=cFAXTaDo" target="_blank">
     View the Invite →
   </a>
 </div>
 
+<!-- BOTTOM centered -->
+<div class="bottom-text">
+  <h2>come pawty wit Vitty.</h2>
+  <p class="tagline">it's giving birthday energy 💅</p>
+</div>
+
 <button id="music-btn" onclick="toggleMusic()">
   <span id="music-icon">🔇</span>
-  <span id="music-label">Play the vibe</span>
+  <span id="music-label">click here to play a bad lil vibe</span>
 </button>
 
 <audio id="audio" loop>
@@ -237,7 +277,7 @@
     r: Math.random() * 2.8 + 0.4,
     a: Math.random(),
     da: (Math.random() * 0.018 + 0.004) * (Math.random() > 0.5 ? 1 : -1),
-    c: ['#ffffff','#00fff7','#ffe93c','#ff3d8b','#b2ffff','#aaffee'][Math.floor(Math.random()*6)]
+    c: ['#ffffff','#ffb6d9','#ff3d8b','#ffd6e8','#ff80b5','#ffe4f0'][Math.floor(Math.random()*6)]
   }));
 
   (function glitterLoop() {
@@ -316,7 +356,7 @@
     } else {
       audio.pause();
       icon.textContent  = '🔇';
-      label.textContent = 'Play the vibe';
+      label.textContent = 'click here to play a bad lil vibe';
       playing = false;
     }
   }
