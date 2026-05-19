@@ -17,16 +17,8 @@
     #glitter-bg {
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 10% 15%, rgba(255,182,210,0.85) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 80% 10%, rgba(220,120,160,0.7) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 40% at 55% 40%, rgba(255,210,230,0.6) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 55% at 20% 70%, rgba(200,90,140,0.65) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 45% at 85% 60%, rgba(255,160,200,0.7) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 40% 85%, rgba(230,100,150,0.6) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 50% at 70% 90%, rgba(255,190,220,0.75) 0%, transparent 55%),
-        #f4a0c0;
-      filter: blur(18px) saturate(0.85) brightness(1.08);
+      background: url('camo.png') center center / cover;
+      filter: blur(2px) brightness(1.05) saturate(0.9);
       transform: scale(1.05);
       z-index: 0;
     }
@@ -86,7 +78,7 @@
       font-size: clamp(0.5rem, 1.2vw, 0.75rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: #ffe93c;
+      color: #ffffff;
       margin-bottom: 0.4rem;
     }
 
@@ -172,21 +164,39 @@
 
     .cta-invite {
       display: inline-block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(0.95rem, 2vw, 1.3rem);
-      letter-spacing: 0.12em;
-      color: #fff;
-      background: #7c3aed;
-      padding: 0.65em 2.2em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+      letter-spacing: 0.05em;
+      color: #c2006a;
+      background: #fff0f5;
+      padding: 0.65em 2em;
       border-radius: 999px;
       text-decoration: none;
-      box-shadow: 0 4px 30px rgba(124,58,237,0.5), 4px 4px 0 #4c1d95;
+      border: 2.5px solid #ffb6d9;
+      box-shadow:
+        0 0 0 4px rgba(255,182,217,0.3),
+        4px 4px 0 #ffb6d9,
+        inset 0 1px 0 rgba(255,255,255,0.9);
       transition: transform 0.15s, box-shadow 0.15s;
+      position: relative;
+    }
+
+    .cta-invite::before {
+      content: '🎀';
+      margin-right: 0.4em;
+      font-size: 1em;
+    }
+
+    .cta-invite::after {
+      content: '🎀';
+      margin-left: 0.4em;
+      font-size: 1em;
     }
 
     .cta-invite:hover {
       transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 8px 40px rgba(124,58,237,0.7), 6px 6px 0 #4c1d95;
+      box-shadow: 0 0 0 4px rgba(255,182,217,0.5), 6px 6px 0 #ffb6d9, inset 0 1px 0 rgba(255,255,255,0.9);
     }
       position: fixed;
       bottom: 1.5rem;
